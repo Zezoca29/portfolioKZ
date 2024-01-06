@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(90deg, #001a9a, #000000, #001a9a);
+}
+
+/* Adicionando efeito degradê aos links do menu ao passar o cursor */
+.navbar-nav .nav-link {
+    transition: color 0.3s ease; /* Adicionando transição de cor */
+}
+
+.navbar-nav .nav-link:hover {
+    background: linear-gradient(45deg, #fd0000, #fff204, #ff0202); /* Efeito degradê ao passar o cursor */
+    -webkit-background-clip: text; /* Garante que o texto siga o padrão do degradê */
+    -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o degradê de fundo */
+    color: #fff; /* Cor do texto ao passar o cursor */
+}
+
+
+.gradient-text {
+    background: -webkit-linear-gradient(45deg, #8a00ff, #00c6fb, #8a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+}
+
+.navbar {
+    background: -webkit-linear-gradient(45deg, #8a00ff, #00c6fb, #8a00ff);
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important;
+}
+
+.central-btn {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #8a00ff, #00c6fb, #8a00ff);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    z-index: 1;
+}
+
+.central-btn:hover {
+    background-color: #0056b3;
+}
+
+.circular-btn {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #8a00ff, #00c6fb, #8a00ff);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, color 0.3s ease; /* Alteração na propriedade de transição */
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.circular-btn:hover {
+    background: linear-gradient(45deg, #ffe100, #2600a1, #0042c6);
+    color: #fff;
+}
+
+.circular-btn.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(2);
+}
+
+.btn-1 {
+    top: 42%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-2 {
+    top: 55%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-3 {
+    top: 70%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+.btn-4 {
+    top: 56%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    animation: fadeInText 2s;
+    margin-top: 2rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(45deg, #8a00ff, #00c6fb, #8a00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+#shuttle-container {
+    position: fixed;
+    color: white;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+    animation: flyAndRotate 8s linear infinite;
+    
+}
+
+@keyframes flyAndRotate {
+    25% {
+        left: calc(100vw - 70px);
+        transform: rotate(0deg);
+    }
+
+    50% {
+        left: calc(100vw - 70px);
+        transform: rotateY(180deg); /* Inverter a rotação horizontalmente */
+        
+    }
+
+    75% {
+        left: 0;
+        transform: rotateY(180deg); /* Manter a inversão na volta */
+    }
+
+    100% {
+        left: 0;
+        transform: rotate(0deg);
+    }
+}
+
+.mt-5 {
+    margin-top: 5.5rem !important;
+}
+
+
+@media (max-width: 940px) {
+    .central-btn {
+        width: 80px;
+        height: 80px;
+        font-size: 16px;
+    }
+
+    .circular-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    /* Ajustes para o título e outras letras */
+    .custom-text {
+        font-size: 1rem; /* Ajuste o tamanho do texto conforme necessário */
+        margin-top: 1rem;
+    }
+
+    .gradient-text {
+        font-size: 1rem; /* Ajuste o tamanho do texto conforme necessário */
+        margin-top: 1rem;
+    }
+}

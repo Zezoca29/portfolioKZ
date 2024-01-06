@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaique Augusto - Portfólio 2024</title>
+    <link rel="icon" href="./assets/INOVA-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <img src="./assets/INOVA-removebg-preview.png" alt="Logo" height="40" class="mr-2">
+            <a class="navbar-brand" href="#">Kaique Augusto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Sobre Mim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./projetos.html">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./habilidades.html">Habilidades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="central-btn" onclick="toggleCircularButtons()">
+        <i class="fas fa-plus"></i>
+    </div>
+
+    <div class="circular-btn btn-1" onclick="navigateTo('https://www.linkedin.com/in/kaiquezeza/')" target="_blank">
+        <i class="fab fa-linkedin"></i>
+    </div>
+    <div class="circular-btn btn-2" onclick="navigateTo('https://api.whatsapp.com/send/?phone=5511932214535&text&type=phone_number&app_absent=0')" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+    <div class="circular-btn btn-3" onclick="navigateTo('https://github.com/Zezoca29')" target="_blank">
+        <i class="fab fa-github"></i>
+    </div>
+    <div class="circular-btn btn-4" onclick="navigateTo('https://mail.google.com/mail/u/0/#inbox')" target="_blank">
+        <i class="far fa-envelope"></i>
+    </div>
+
+    <div class="container text-center mt-5">
+        <h1 class="display-3 animate__animated animate__fadeInUp gradient-text">Desenvolvedor Mobile</h1>
+        <p class="animate__animated animate__fadeIn custom-text">Olá, sou Kaique Augusto, um entusiasta de tecnologia dedicado ao desenvolvimento de mobile e web. Trago experiência prática em React Native, Kotlin, Node.js, MongoDB e TypeScript, com habilidades em banco de dados e integrações com ERPs.</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script>
+        function toggleCircularButtons() {
+            const centralBtn = document.querySelector('.central-btn');
+            const circularButtons = document.querySelectorAll('.circular-btn');
+
+            centralBtn.classList.toggle('active');
+            circularButtons.forEach(btn => btn.classList.toggle('active'));
+
+            if (centralBtn.classList.contains('active')) {
+                anime({
+                    targets: '.circular-btn',
+                    translateX: function (el, i) {
+                        return Math.cos((Math.PI / 2) * i) * 80;
+                    },
+                    translateY: function (el, i) {
+                        return Math.sin((Math.PI / 2) * i) * 80;
+                    },
+                    opacity: 1,
+                    easing: 'easeInOutQuad',
+                    duration: 500,
+                });
+            } else {
+                anime({
+                    targets: '.circular-btn',
+                    translateX: 0,
+                    translateY: 0,
+                    opacity: 0,
+                    easing: 'easeInOutQuad',
+                    duration: 500,
+                });
+            }
+        }
+
+        function navigateTo(link) {
+            window.open(link, '_blank');
+        }
+    </script>
+
+    <div id="shuttle-container" class="shuttle-container">
+        <div class="shuttle-icon">
+            <i id="shuttle-icon" class="fas fa-car-side fa-bounce"></i>
+        </div>
+    </div>
+
+</body>
+
+</html>
