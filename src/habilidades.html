@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaique Augusto - Habilidades</title>
+    <link rel="icon" href="./assets/INOVA-removebg-preview.png" type="image/png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/skills.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            background-color: #343a40;
+            border-bottom: 1px solid #555;
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        .navbar-toggler-icon {
+            background-color: transparent;
+        }
+        .navbar-nav .nav-item .nav-link {
+            color: #fff;
+        }
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #f7b733;
+        }
+        .section-heading {
+            background: linear-gradient(to right, #fc4a1a, #f7b733);
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .stack-section {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .list-group-item {
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            background-color: #f8f9fa;
+            border: none;
+            border-bottom: 1px solid #dee2e6;
+            padding: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+        .list-group-item:hover {
+            transform: scale(1.05);
+            background-color: #e9ecef;
+        }
+        .list-group-item i {
+            margin-right: 12px;
+            font-size: 1rem;
+            color: #fc4a1a;
+        }
+        .list-group {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body class="overflow-auto">
+
+    <!-- Adicione a classe navbar-dark e text-white ao seu nav -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <img src="./assets/INOVA-removebg-preview.png" alt="Logo" height="40" class="mr-2">
+            <a class="navbar-brand" href="#">Kaique Augusto</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Sobre Mim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./projetos.html">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./habilidades.html">Habilidades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Stack Principal -->
+                <div class="stack-section">
+                    <h3 class="section-heading">Stack Principal</h3>
+                    <div class="overflow-auto">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="fab fa-python"></i> Python com Flask</li>
+                            <li class="list-group-item"><i class="fab fa-js"></i> JavaScript com React</li>
+                            <li class="list-group-item"><i class="fab fa-node-js"></i> Node.js</li>
+                            <li class="list-group-item"><i class="fab fa-mdb"></i> MongoDB</li>
+                        </ul>                        
+                    </div>
+                </div>
+
+                <!-- Stack 2 -->
+                <div class="stack-section">
+                    <h3 class="section-heading">Stack 2</h3>
+                    <div class="overflow-auto">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="fab fa-java"></i> Java com Spring Framework</li>
+                            <li class="list-group-item"><i class="fab fa-js"></i> JavaScript</li>
+                            <li class="list-group-item"><i class="fab fa-angular"></i> Angular</li>
+                            <li class="list-group-item"><i class="fas fa-database"></i> MySQL</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <!-- Metodologias ágeis -->
+                <div class="stack-section">
+                    <h3 class="section-heading">Metodologias Ágeis</h3>
+                    <div class="overflow-auto">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="fas fa-check"></i> Scrum</li>
+                            <li class="list-group-item"><i class="fas fa-check"></i> Smart</li>
+                            <li class="list-group-item"><i class="fas fa-check"></i> Black Belt Six Sigma</li>
+                            <li class="list-group-item"><i class="fas fa-check"></i> Extreme Programming</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
