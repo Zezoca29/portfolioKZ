@@ -1,115 +1,939 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaique Augusto - Portfólio 2024</title>
-    <link rel="icon" href="./assets/INOVA-removebg-preview.png" type="image/png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <title>Kaique Augusto | Engenheiro de Software Senior</title>
+    <style>
+        :root {
+            --primary: #0a192f;
+            --secondary: #64ffda;
+            --text: #ccd6f6;
+            --text-secondary: #8892b0;
+            --bg: #0a192f;
+            --bg-secondary: #112240;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', sans-serif;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 30px;
+        }
+        nav ul li a {
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+        }
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        main {
+            padding: 0 150px;
+        }
+        section {
+            min-height: 100vh;
+            padding: 100px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-subtitle {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hero-title-sub {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .hero-desc {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-right: 15px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        .cta-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+        .terminal-container {
+            width: 600px;
+            background-color: #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        .terminal-header {
+            display: flex;
+            padding: 10px;
+            background-color: #0f172a;
+        }
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .close { background-color: #ff5f56; }
+        .minimize { background-color: #ffbd2e; }
+        .maximize { background-color: #27c93f; }
+        .terminal-body {
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+        .command-line {
+            margin-bottom: 10px;
+        }
+        .prompt {
+            color: #27c93f;
+            margin-right: 10px;
+        }
+        .command {
+            color: white;
+        }
+        .output {
+            color: #8892b0;
+            margin-bottom: 15px;
+        }
+        .typed-out {
+            overflow: hidden;
+            border-right: 2px solid var(--secondary);
+            animation: cursor-blink 1s step-end infinite;
+        }
+        @keyframes cursor-blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--secondary); }
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .section-title::after {
+            content: "";
+            display: block;
+            height: 1px;
+            width: 300px;
+            background-color: var(--text-secondary);
+            margin-left: 20px;
+            opacity: 0.5;
+        }
+        .about-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        .about-text {
+            flex: 0.6;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+        .about-pic {
+            flex: 0.4;
+            max-width: 300px;
+            position: relative;
+        }
+        .about-pic img {
+            border-radius: 5px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            filter: grayscale(100%) contrast(1.2);
+            transition: all 0.3s ease;
+        }
+        .about-pic::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--secondary);
+            top: 15px;
+            left: 15px;
+            z-index: 0;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .about-pic:hover img {
+            filter: none;
+        }
+        .about-pic:hover::after {
+            transform: translate(-5px, -5px);
+        }
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 200px));
+            gap: 10px;
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        .skills-list li {
+            position: relative;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+        .skills-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        .highlight {
+            color: var(--secondary);
+        }
+        .experience {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .tabs-container {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+        }
+        .tab-list {
+            display: flex;
+            flex-direction: column;
+            margin-right: 30px;
+            border-left: 2px solid var(--text-secondary);
+        }
+        .tab-button {
+            background: transparent;
+            border: none;
+            padding: 15px 25px;
+            font-size: 0.9rem;
+            color: var(--text);
+            cursor: pointer;
+            text-align: left;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            color: var(--secondary);
+        }
+        .tab-button.active::before {
+            content: "";
+            position: absolute;
+            left: -2px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--secondary);
+        }
+        .tab-content {
+            flex: 1;
+        }
+        .tab-panel {
+            display: none;
+        }
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .job-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        .job-company {
+            color: var(--secondary);
+        }
+        .job-duration {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .job-duties {
+            list-style: none;
+        }
+        .job-duties li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        .job-duties li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        /* Projetos */
+        .projects {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 5px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .folder-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+        }
+        .project-links a {
+            color: var(--text);
+            margin-left: 15px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        .project-links a:hover {
+            color: var(--secondary);
+        }
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .project-desc {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .project-tech li {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        
+        /* Certificações */
+        .certifications {
+            margin-top: 30px;
+        }
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+        .certification-card {
+            background-color: var(--bg-secondary);
+            border-radius: 5px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--secondary);
+        }
+        .certification-card:hover {
+            transform: translateX(5px);
+        }
+        .certification-name {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .certification-issuer {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        .certification-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Salários */
+        .salary-section {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 50px;
+            border-left: 3px solid var(--secondary);
+        }
+        .salary-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        .salary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .salary-metric {
+            background-color: rgba(10, 25, 47, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .salary-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: white;
+        }
+        .salary-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .salary-note {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact */
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 150px 0;
+            min-height: 70vh;
+        }
+        .contact-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .contact-subtitle {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
+        .contact-text {
+            max-width: 600px;
+            margin-bottom: 50px;
+            color: var(--text-secondary);
+        }
+        .contact-cta {
+            padding: 18px 28px;
+            border: 1px solid var(--secondary);
+            border-radius: 5px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .contact-cta:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        .social-links li {
+            margin: 0 15px;
+        }
+        .social-links a {
+            color: var(--text);
+            font-size: 1.2rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            main { padding: 0 100px; }
+        }
+        @media (max-width: 900px) {
+            main { padding: 0 50px; }
+            .hero-title { font-size: 4rem; }
+            .hero-title-sub { font-size: 2.5rem; }
+            .terminal-container { width: 100%; }
+            .about-content { flex-direction: column; }
+            .about-pic { margin: 0 auto; }
+        }
+        @media (max-width: 600px) {
+            main { padding: 0 25px; }
+            header { padding: 20px 25px; }
+            .hero-title { font-size: 3rem; }
+            .hero-title-sub { font-size: 2rem; }
+            .tabs-container { flex-direction: column; }
+            .tab-list {
+                flex-direction: row;
+                overflow-x: auto;
+                margin-right: 0;
+                margin-bottom: 30px;
+                border-left: none;
+                border-bottom: 2px solid var(--text-secondary);
+            }
+            .tab-button.active::before {
+                left: 0;
+                top: auto;
+                bottom: -2px;
+                height: 2px;
+                width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                font-size: x-small;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Header -->
+    <header>
+        <div class="logo">KA</div>
+        <nav>
+            <ul>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#experience">Experiência</a></li>
+                <li><a href="#project">Projetos</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <img src="./assets/INOVA-removebg-preview.png" alt="Logo" height="40" class="mr-2">
-            <a class="navbar-brand" href="#">Kaique Augusto</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">Sobre Mim</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./projetos.html">Projetos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./habilidades.html">Habilidades</a>
-                    </li>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <p class="hero-subtitle animate delay-1">Olá, meu nome é</p>
+            <h1 class="hero-title animate delay-2">Kaique Augusto.</h1>
+            <h2 class="hero-title-sub animate delay-3">Eu construo soluções de software.</h2>
+            <p class="hero-desc animate delay-4">Sou um Engenheiro de Software Senior especializado em desenvolvimento backend com Java + Spring Boot e Python, com experiência em arquitetura de sistemas, integrações de APIs e otimização de processos (Black Belt Lean Six Sigma).</p>
+            <div class="animate delay-5">
+                <a href="#project" class="cta-btn">Ver Projetos</a>
+                <a href="#contact" class="cta-btn">Entre em Contato</a>
+            </div>
+
+            <div class="terminal-container animate delay-5">
+                <div class="terminal-header">
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                </div>
+                <div class="terminal-body">
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command typed-out">java -version</span>
+                    </div>
+                    <div class="output">
+                        openjdk version "17.0.8" 2023-07-18<br>
+                        OpenJDK Runtime Environment (build 17.0.8+7)<br>
+                        OpenJDK 64-Bit Server VM (build 17.0.8+7, mixed mode)
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command">spring --version</span>
+                    </div>
+                    <div class="output">
+                        Spring CLI v3.2.1
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command">python --version</span>
+                    </div>
+                    <div class="output">
+                        Python 3.11.4
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command">echo $SKILLS</span>
+                    </div>
+                    <div class="output">
+                        ['Java', 'Spring Boot', 'Python', 'Django', 'Next.js', 'API Integration', 'Lean Six Sigma', 'Microservices']
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command">cat salary_potential.txt</span>
+                    </div>
+                    <div class="output">
+                        [✓] Technical Leadership<br>
+                        [✓] System Architecture<br>
+                        [✓] AI/ML Integration<br>
+                        [✓] Cloud Architecture<br>
+                        [✓] Enterprise Solution Design<br>
+                        [✓] Geração de valor: R$ 1.000.000+/ano
+                    </div>
+                    <div class="command-line">
+                        <span class="prompt">kaique@server:~$</span>
+                        <span class="command">_</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Section -->
+<section id="about" class="about">
+    <h2 class="section-title">Sobre Mim</h2>
+    <div class="about-content">
+        <div class="about-text">
+            <p禁止+1
+            <p>
+                Olá! Sou Kaique, um engenheiro de software apaixonado por desenvolver soluções robustas e escaláveis. Com experiência em desenvolvimento back-end, minha jornada na tecnologia começou há mais de 4 anos, trabalhando em projetos que vão desde firmwares embarcados até integrações de sistemas corporativos.
+            </p>
+            <p>
+                Especializado em <span class="highlight">C++</span> e <span class="highlight">Java com Spring Boot</span>, tenho expertise na criação de firmwares para dispositivos RFID e no desenvolvimento de automações e integrações complexas. Na <span class="highlight">Cielo</span>, construí uma aplicação integrada com <span class="highlight">SonarQube</span> e <span class="highlight">GitHub</span> que analisa arquivos de configuração, identificando problemas de qualidade e segurança, reduzindo revisões manuais em 70%. Também implementei uma automação <span class="highlight">end-to-end</span> com <span class="highlight">Gherkin</span>, validando todas as formas de pagamento, o que cortou o tempo de testes de 4 horas para 30 minutos.
+            </p>
+            <p>
+                Na <span class="highlight">Inovacode RFID Solutions</span>, desenvolvi integrações entre sistemas <span class="highlight">ERP</span> e <span class="highlight">CRM</span> com aplicações mobile, melhorando a experiência do usuário em 30%. Além disso, monitorei e otimizei servidores na <span class="highlight">Heroku</span>, garantindo 99,9% de uptime e reduzindo latência em 25%. Minha habilidade em <span class="highlight">traduzir requisitos de negócio em soluções técnicas</span> gerou impactos significativos, como maior eficiência operacional e confiabilidade de sistemas.
+            </p>
+            <p>
+                Sou motivado por desafios técnicos e comprometido em entregar código de alta qualidade. Minha experiência em <span class="highlight">CI/CD</span>, APIs REST e monitoramento de infraestrutura me permite construir sistemas que aliam performance e escalabilidade. Fora do trabalho, gosto de explorar novas tecnologias e contribuir para projetos open-source, mantendo-me atualizado com as tendências do mercado.
+            </p>
+            <p>Algumas tecnologias com as quais tenho trabalhado recentemente:</p>
+            <ul class="skills-list">
+                <li>C++</li>
+                <li>Java / Spring Boot</li>
+                <li>Gherkin / Cucumber</li>
+                <li>SonarQube</li>
+                <li>Heroku</li>
+                <li>REST APIs</li>
+                <li>Git / GitHub</li>
+                <li>PostgreSQL</li>
+                <li>CI/CD Pipelines</li>
+                <li>ERP/CRM Integrations</li>
+            </ul>
+        </div>
+        <div class="about-pic">
+            <img src="/src/assets/image.png" alt="Foto de Kaique"/>
+        </div>
+    </div>
+</section>
+            <!-- Experience Section -->
+<section id="experience" class="experience">
+    <h2 class="section-title experience-title">Experiência Profissional</h2>
+    <div class="tabs-container">
+        <div class="tab-list" role="tablist">
+            <button class="tab-button active" data-tab="job1">Cielo</button>
+            <button class="tab-button" data-tab="job2">Inovacode RFID Solutions</button>
+        </div>
+        <div class="tab-content">
+            <div id="job1" class="tab-panel active">
+                <h3 class="job-title">Engenheiro de Software <span class="job-company">@ Cielo</span></h3>
+                <p class="job-duration">Junho 2024 - Presente</p>
+                <ul class="job-duties">
+                    <li>Desenvolvi uma aplicação integrada com <strong>SonarQube</strong> e <strong>GitHub</strong> para análise de arquivos de configuração (<code>package.json</code>, <code>pom.xml</code>), identificando vulnerabilidades e problemas de qualidade, com relatórios automatizados por e-mail, reduzindo revisões manuais em 70%.</li>
+                    <li>Implementei uma automação <strong>end-to-end</strong> com <strong>Java Spring Boot</strong> e <strong>Gherkin</strong> para validar todas as formas de pagamento da Cielo, reduzindo o tempo de testes de 4 horas para 30 minutos e garantindo 100% de cobertura.</li>
+                    <li>Otimizei APIs RESTful para integração com sistemas internos e externos, melhorando a escalabilidade e reduzindo a latência em 20%.</li>
+                    <li>Contribuí para pipelines de CI/CD, reduzindo o ciclo de entrega em 40% e aumentando a qualidade do software em produção.</li>
+                </ul>
+            </div>
+            <div id="job2" class="tab-panel">
+                <h3 class="job-title">Desenvolvedor Back-end <span class="job-company">@ Inovacode RFID Solutions</span></h3>
+                <p class="job-duration">Junho 2022 - Fevereiro 2024</p>
+                <ul class="job-duties">
+                    <li>Programei <strong>firmwares</strong> para dispositivos RFID em <strong>C++</strong>, garantindo alta performance e 99,9% de uptime em sistemas embarcados.</li>
+                    <li>Integrei sistemas <strong>ERP</strong> e <strong>CRM</strong> com aplicações mobile, aumentando a interoperabilidade e melhorando a experiência do usuário em 30%.</li>
+                    <li>Monitorei e otimizei servidores <strong>Heroku</strong>, reduzindo latência em 25% e assegurando disponibilidade contínua.</li>
+                    <li>Desenvolvi APIs REST para comunicação entre sistemas, acelerando a entrega de novas funcionalidades em 15%.</li>
                 </ul>
             </div>
         </div>
-    </nav>
-
-    <div class="central-btn" onclick="toggleCircularButtons()">
-        <i class="fas fa-plus"></i>
     </div>
-
-    <div class="circular-btn btn-1" onclick="navigateTo('https://www.linkedin.com/in/kaiquezeza/')" target="_blank">
-        <i class="fab fa-linkedin"></i>
-    </div>
-    <div class="circular-btn btn-2" onclick="navigateTo('https://api.whatsapp.com/send/?phone=5511932214535&text&type=phone_number&app_absent=0')" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </div>
-    <div class="circular-btn btn-3" onclick="navigateTo('https://github.com/Zezoca29')" target="_blank">
-        <i class="fab fa-github"></i>
-    </div>
-    <div class="circular-btn btn-4" onclick="navigateTo('https://mail.google.com/mail/u/0/#inbox')" target="_blank">
-        <i class="far fa-envelope"></i>
-    </div>
-
-    <div class="container text-center mt-5">
-        <h1 class="display-3 animate__animated animate__fadeInUp gradient-text">Engenheiro de Software</h1>
-        <p class="animate__animated animate__fadeIn custom-text">Olá, sou Kaique Augusto, um entusiasta de tecnologia dedicado ao desenvolvimento de software e projetos. Trago experiência prática em Javascript, C++, Java e Python, com habilidades em banco de dados e integrações com ERPs e CRM´s.</p>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
-    <script>
-        function toggleCircularButtons() {
-            const centralBtn = document.querySelector('.central-btn');
-            const circularButtons = document.querySelectorAll('.circular-btn');
-
-            centralBtn.classList.toggle('active');
-            circularButtons.forEach(btn => btn.classList.toggle('active'));
-
-            if (centralBtn.classList.contains('active')) {
-                anime({
-                    targets: '.circular-btn',
-                    translateX: function (el, i) {
-                        return Math.cos((Math.PI / 2) * i) * 80;
-                    },
-                    translateY: function (el, i) {
-                        return Math.sin((Math.PI / 2) * i) * 80;
-                    },
-                    opacity: 1,
-                    easing: 'easeInOutQuad',
-                    duration: 500,
-                });
-            } else {
-                anime({
-                    targets: '.circular-btn',
-                    translateX: 0,
-                    translateY: 0,
-                    opacity: 0,
-                    easing: 'easeInOutQuad',
-                    duration: 500,
-                });
-            }
-        }
-
-        function navigateTo(link) {
-            window.open(link, '_blank');
-        }
-    </script>
-
-    <div id="shuttle-container" class="shuttle-container">
-        <div class="shuttle-icon">
-            <i id="shuttle-icon" class="fas fa-car-side fa-bounce"></i>
-        </div>
-    </div>
-
+</section>
+        </section>
+        <!-- Projects Section -->
+        <section id="project" class="projects">
+            <h2 class="section-title">Projetos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/Zezoca29/frontend-blog.git" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://frontend-blog-hazel.vercel.app/" target="_blank" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Site Blog Psicopedagógico</h3>
+                    <p class="project-desc">
+                        Desenvolvi um blog psicopedagógico como trabalho voluntário para apoiar uma professora na expansão de seu negócio educacional. O projeto consistiu na criação de uma plataforma dinâmica que oferece conteúdos educativos, ferramentas de agendamento e interação com os alunos, aumentando o alcance e a visibilidade da profissional. Utilizei <strong>Next.js</strong> e <strong>TypeScript</strong> para construir um front-end responsivo e otimizado, integrado a um back-end robusto em <strong>Django</strong> e <strong>Python</strong>, garantindo escalabilidade e facilidade de manutenção. A implementação resultou em um aumento de 50% no engajamento online da professora e facilitou a captação de novos clientes.
+                    </p>
+                    <ul class="project-tech">
+                        <li>Next.js</li>
+                        <li>TypeScript</li>
+                        <li>Django Framework</li>
+                        <li>Python</li>
+                        <li>PostgreSQL</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/username/project2" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://project2-demo.com" target="_blank" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Projeto 2</h3>
+                    <p class="project-desc">Descrição breve do projeto, destacando suas funcionalidades e tecnologias utilizadas.</p>
+                    <ul class="project-tech">
+                        <li>Python</li>
+                        <li>Django</li>
+                        <li>PostgreSQL</li>
+                    </ul>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/username/project3" target="_blank" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://project3-demo.com" target="_blank" aria-label="Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Projeto 3</h3>
+                    <p class="project-desc">Descrição breve do projeto, destacando suas funcionalidades e tecnologias utilizadas.</p>
+                    <ul class="project-tech">
+                        <li>React</li>
+                        <li>Next.js</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="contact-title">Entre em Contato</h2>
+            <p class="contact-subtitle">Estou disponível para novas oportunidades e colaborações.</p>
+            <p class="contact-text">Se você tem um projeto em mente, uma ideia para discutir ou apenas quer dizer olá, sinta-se à vontade para entrar em contato comigo através dos links abaixo.</p>
+            <div class="social-links">
+            <ul style="display: flex; justify-content: center; gap: 50px; list-style: none; padding: 0;">
+            <li>
+            <a href="https://www.linkedin.com/in/kaiquezeza/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin" style="font-size: 2rem;"></i>
+            </a>
+            </li>
+            <li>
+            <a href="https://github.com/Zezoca29" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github" style="font-size: 2rem;"></i>
+            </a>
+            </li>
+            <li>
+            <a href="https://wa.me/5511932214535" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp" style="font-size: 2rem;"></i>
+            </a>
+            </li>
+            <li>
+            <a href="mailto:kaiquezeza@gmail.com" aria-label="E-mail">
+                <i class="fas fa-envelope" style="font-size: 2rem;"></i>
+            </a>
+            </li>
+            </ul>
+            </div>
+        </section>
+        </main>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const typed = new Typed('.typed-out', {
+                strings: ['java -version', 'spring --version', 'python --version', 'echo $SKILLS', 'cat salary_potential.txt', 'java -version'],
+                typeSpeed: 50,
+                backSpeed: 25,
+                backDelay: 1000,
+                startDelay: 500,
+                loop: false,
+            });
+        });
+    </script>
+    <script>
+        // Tabs functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabPanels = document.querySelectorAll('.tab-panel');
 
-</html>
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                // Remove active class from all buttons and panels
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabPanels.forEach(panel => panel.classList.remove('active'));
+
+                // Add active class to the clicked button and corresponding panel
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        // Scroll to section on nav link click
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+    <script>
+        // Animate elements on scroll
+        const animateElements = document.querySelectorAll('.animate');
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+    <script>
+        // Smooth scroll to top
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.innerHTML = '↑';
+        scrollToTopBtn.classList.add('scroll-to-top');
+        document.body.appendChild(scrollToTopBtn);
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollSmoother.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Observer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomEase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomBounce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomWiggle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/CustomBounce.min.js"></script>
+
